@@ -40,6 +40,11 @@ class MongoLib {
       return db.collection(collection).findOne({ _id: id })
     })
   }
+  getUserByUsername(collection, object){
+    return this.connect().then(db => {
+      return db.collection(collection).findOne({username: object})
+    })
+  }
   create(collection, data) {
     return this.connect().then(db => {
       return db.collection(collection).insertOne(data)

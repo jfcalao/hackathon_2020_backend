@@ -13,9 +13,14 @@ class UserService{
     return movies || []
   }
   async getUser(userId){
-    console.log('MOVIE ID IN MOVIE SERVICE ', userId)
     const movie= await this.mongoDB.get(this.collection, userId)
     return movie || {}
+  }
+  async getUserByUsername(username){
+    console.log('MOVIE ID IN MOVIE SERVICE ', username)
+    const movie= await this.mongoDB.getUserByUsername(this.collection, username)
+    return movie || {}
+    
   }
   async createUser(movie){
     const createMovieId= await this.mongoDB.create(this.collection, movie)

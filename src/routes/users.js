@@ -16,6 +16,21 @@ router.get('/users/:id', async function (req, res, next) {
   const {id} = req.params
     try {
       const user = await mongoConnection.getUser( id )
+      console.log(user)
+      res.status(200).json(
+        {
+          data: user,
+          message: 'users retrieved'
+        }
+      )
+    } catch (error) {
+      next(error)
+    }
+})
+router.post('/users/username', async function (req, res, next) {
+  const {username, password} = req.body
+    try {
+      const user = await mongoConnection.getUserByUsername( username )
       res.status(200).json(
         {
           data: user,
