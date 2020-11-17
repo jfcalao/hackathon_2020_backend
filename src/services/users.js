@@ -12,20 +12,20 @@ class UserService{
     const movies= await this.mongoDB.getAll(this.collection)
     return movies || []
   }
-  async getMovie({movieId}){
-    console.log('MOVIE ID IN MOVIE SERVICE ', movieId)
-    const movie= await this.mongoDB.get(this.collection, movieId)
+  async getUser(userId){
+    console.log('MOVIE ID IN MOVIE SERVICE ', userId)
+    const movie= await this.mongoDB.get(this.collection, userId)
     return movie || {}
   }
-  async createMovie({movie}){
+  async createUser(movie){
     const createMovieId= await this.mongoDB.create(this.collection, movie)
     return createMovieId
   }
-  async updateMovie({movieId, movie}= {}){
+  async updateUser(movieId, movie= {}){
     const updateMovieId= await this.mongoDB.update(this.collection, movieId, movie)
     return updateMovieId
   }
-  async deleteMovie({movieId}){
+  async deleteUser(movieId){
     const deletedMovieId= await this.mongoDB.delete(this.collection, movieId)
     return deletedMovieId
   }
