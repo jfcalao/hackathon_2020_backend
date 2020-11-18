@@ -15,6 +15,7 @@ app.use(cors())
 app.use(require('./routes/users'))
 app.use(require('./routes/authController'))
 app.use(require('./routes/sendEmail'))
+app.use(require('./routes/products'))
 
 
 //app.get('/', cors(corsOptions), (req, res)=>{
