@@ -25,14 +25,15 @@ const encryptPassword = async (password) => {
 router.post('/singup', cors(), async (req, res) => {
     try {
         // Receiving Data
-        let { name, username, password, email } = req.body;
+        let { name, username, password, email, type } = req.body;
         password = await encryptPassword(password)
         // Creating a new User
         const user = await mongoConnection.createUser({
             name,
             username,
             password,
-            email
+            email,
+            type
         })
 
 
@@ -71,10 +72,11 @@ router.post('/singin', async (req, res) => {
     if (!validPassword) {
         return res.status(401).send({ auth: false, token: null });
     }
+    const userType= user.type
     const token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 60 * 60 * 24
     });
-    res.status(200).json({ auth: true, token });
+    res.status(200).json({ auth: true, token, userType });
 });
 
 router.get('/logout', function (req, res) {
