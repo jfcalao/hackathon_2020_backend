@@ -23,6 +23,6 @@ app.get('/', cors(), (req, res)=>{
   res.json('Welcome to carivest API')
 })
 // Starting server
-app.listen(3000, ()=>{
+app.listen(app.get('port'), ()=>{
   console.log('server on port', app.get('port'))
 })
