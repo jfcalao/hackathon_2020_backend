@@ -37,7 +37,8 @@ router.post('/products', async (req, res) => {
     cantidad_disponible,
     categoria,
     descripcion,
-    images
+    images,
+    idProductor
   } = req.body
   const user = await mongoConnection.createProduct({
     nombre,
@@ -46,7 +47,8 @@ router.post('/products', async (req, res) => {
     cantidad_disponible,
     categoria,
     descripcion,
-    images
+    images,
+    idProductor
   })
   res.json(user)
 })

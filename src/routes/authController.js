@@ -49,7 +49,7 @@ router.post('/singup', cors(), async (req, res) => {
     }
 });
 
-router.get('/me', verifyToken, async (req, res) => {
+router.post('/me', verifyToken, async (req, res) => {
     // res.status(200).send(decoded);
     // Search the Info base on the ID
     // const user = await User.findById(decoded.id, { password: 0});
